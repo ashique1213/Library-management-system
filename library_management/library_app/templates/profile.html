@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Profile{% endblock %}
 {% block content %}
-<div class="row justify-content-center animate__animated animate__fadeIn">
-    <div class="col-md-6">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white">
+<div class="row justify-content-center animate__animated animate__fadeIn py-6">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-primary text-white py-3">
                 <h3 class="mb-0">Profile</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body p-4">
                 <form method="post">
                     {% csrf_token %}
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{ student.user.username }}" required>
+                        <input type="text" class="form-control" id="username" name="username" value="{{ student.user.username }}" required aria-describedby="usernameHelp">
+                        <div id="usernameHelp" class="form-text">Enter your username.</div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="password" class="form-label">New Password (leave blank to keep current)</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp">
+                        <div id="passwordHelp" class="form-text">Enter a new password or leave blank.</div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100"><i class="fas fa-save"></i> Update Profile</button>
+                    <button type="submit" class="btn btn-primary w-100"><i class="fas fa-save me-2"></i>Update Profile</button>
                 </form>
             </div>
         </div>

@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Home - Library Management System{% endblock %}
 {% block content %}
-<div class="hero-section text-center animate__animated animate__fadeIn">
+<div class="hero-section text-center py-20 bg-cover bg-center animate__animated animate__fadeIn" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/1600x900/?library');">
     <div class="container">
-        <h1 class="display-4">Welcome to the Library Management System</h1>
-        <p class="lead text-muted">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Welcome to the Library Management System</h1>
+        <p class="text-lg md:text-xl text-gray-200 mb-6 max-w-2xl mx-auto">
             Streamline your department's library operations with our intuitive platform. Manage books, track borrowing, and access resources effortlessly.
         </p>
-        <a href="{% url 'login' %}" class="btn btn-primary btn-lg mt-3"><i class="fas fa-sign-in-alt"></i> Login to Get Started</a>
+        <a href="#" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-sign-in-alt me-2"></i>Login to Get Started</a>
     </div>
 </div>
 {% endblock %}

@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}Browse Books{% endblock %}
 {% block content %}
-<div class="animate__animated animate__fadeIn">
-    <h2 class="mb-4">Browse Books</h2>
-    <form method="get" class="mb-4">
+<div class="animate__animated animate__fadeIn py-6">
+    <h2 class="text-3xl font-bold mb-6">Browse Books</h2>
+    <form method="get" class="mb-6">
         <div class="input-group shadow-sm">
             <span class="input-group-text bg-primary text-white"><i class="fas fa-search"></i></span>
-            <input type="text" name="q" class="form-control" placeholder="Search by title, author, or category" value="{{ query }}">
+            <input type="text" name="q" class="form-control" placeholder="Search by title, author, or category" value="{{ query }}" aria-label="Search Books">
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
     <div class="row">
         {% for book in books %}
-        <div class="col-md-4 mb-4">
-            <div class="card shadow h-100 book-card">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-lg border-0 h-100 book-card transition-transform duration-300 hover:scale-105">
                 <div class="card-body">
-                    <h5 class="card-title">{{ book.title }}</h5>
+                    <h5 class="card-title text-lg font-semibold">{{ book.title }}</h5>
                     <p class="card-text"><strong>Author:</strong> {{ book.author }}</p>
                     <p class="card-text"><strong>Category:</strong> {{ book.category }}</p>
                     <p class="card-text"><strong>Edition:</strong> {{ book.edition }}</p>
                     <p class="card-text"><strong>Available:</strong> {{ book.available_quantity }}</p>
-                    <a href="{% url 'borrow_book' book.id %}" class="btn btn-success w-100"><i class="fas fa-book-reader"></i> Borrow</a>
+                    <a href="{% url 'borrow_book' book.id %}" class="btn btn-success w-100" aria-label="Borrow Book"><i class="fas fa-book-reader me-2"></i>Borrow</a>
                 </div>
             </div>
         </div>
         {% empty %}
         <div class="col-12">
-            <div class="alert alert-info">No books found.</div>
+            <div class="alert alert-info shadow-sm">No books found.</div>
         </div>
         {% endfor %}
     </div>

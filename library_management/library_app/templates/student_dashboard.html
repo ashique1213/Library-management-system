@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Student Dashboard{% endblock %}
 {% block content %}
-<div class="animate__animated animate__fadeIn">
-    <div class="card shadow mb-4">
-        <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">Welcome, {{ student.user.username }}</h3>
+<div class="animate__animated animate__fadeIn py-6">
+    <div class="card shadow-lg border-0 mb-4">
+        <div class="card-header bg-primary text-white py-3">
+            <h3 class="card-title">Welcome, {{ user.username }}</h3>
         </div>
         <div class="card-body">
-            <p><strong>Roll Number:</strong> {{ student.roll_number }} | <strong>Batch Year:</strong> {{ student.batch_year }}</p>
+            <p class="text-lg"><strong>Roll Number:</strong> {{ student.roll_number }} | <strong>Batch Year:</strong> {{ student.batch_year }}</p>
+            <button class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#profileModal"><i class="fas fa-user me-2"></i>Edit Profile</button>
         </div>
     </div>
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white py-3">
             <h3 class="mb-0">Your Borrowed Books</h3>
         </div>
         <div class="card-body">
@@ -22,6 +23,7 @@
                         <th>Author</th>
                         <th>Borrowed Date</th>
                         <th>Return Due Date</th>
+                        <th>Date</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -43,14 +45,14 @@
                             {% endif %}
                         </td>
                         <td>
-                            {% if not record.returned and not record.return_requested %}
-                                <a href="{% url 'request_return' record.id %}" class="btn btn-sm btn-primary"><i class="fas fa-undo"></i> Request Return</a>
+                            {% if not record.returned and not not record.return_requested %}
+                                <a href="{% url 'request_return' record.id %}" class="btn btn-sm btn-primary" btn-sm aria-label="Request Primary Return"><i class="fas fa-undo me-1"></i>Request</i></a> Return</a>
                             {% endif %}
                         </td>
                     </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                {% endfor %}
+            </tbody>
+    </table>
         </div>
     </div>
 </div>

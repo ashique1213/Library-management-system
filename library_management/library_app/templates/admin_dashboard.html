@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}Admin Dashboard{% endblock %}
 {% block content %}
-<div class="animate__animated animate__fadeIn">
-    <h2 class="mb-4">Admin Dashboard</h2>
+<div class="animate__animated animate__fadeIn py-6">
+    <h2 class="text-3xl font-bold mb-6">Admin Dashboard</h2>
+    <div class="mb-4">
+        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addStudentModal"><i class="fas fa-user-plus me-2"></i>Add Student</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBookModal"><i class="fas fa-book me-2"></i>Add Book</button>
+    </div>
     <div class="row">
         <div class="col-md-6 mb-4">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white py-3">
                     <h3 class="mb-0">Students</h3>
                 </div>
                 <div class="card-body">
@@ -26,8 +30,8 @@
                                 <td>{{ student.roll_number }}</td>
                                 <td>{{ student.batch_year }}</td>
                                 <td>
-                                    <a href="{% url 'edit_student' student.id %}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                                    <a href="{% url 'delete_student' student.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></a>
+                                    <a href="{% url 'edit_student' student.id %}" class="btn btn-sm btn-warning me-1" aria-label="Edit Student"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'delete_student' student.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')" aria-label="Delete Student"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -37,8 +41,8 @@
             </div>
         </div>
         <div class="col-md-6 mb-4">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white py-3">
                     <h3 class="mb-0">Books</h3>
                 </div>
                 <div class="card-body">
@@ -58,8 +62,8 @@
                                 <td>{{ book.author }}</td>
                                 <td>{{ book.available_quantity }}/{{ book.quantity }}</td>
                                 <td>
-                                    <a href="{% url 'edit_book' book.id %}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                                    <a href="{% url 'delete_book' book.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></a>
+                                    <a href="{% url 'edit_book' book.id %}" class="btn btn-sm btn-warning me-1" aria-label="Edit Book"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'delete_book' book.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')" aria-label="Delete Book"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -69,8 +73,8 @@
             </div>
         </div>
     </div>
-    <div class="card shadow mb-4">
-        <div class="card-header bg-primary text-white">
+    <div class="card shadow-lg border-0 mb-4">
+        <div class="card-header bg-primary text-white py-3">
             <h3 class="mb-0">Borrowed Books</h3>
         </div>
         <div class="card-body">
@@ -96,8 +100,8 @@
             </table>
         </div>
     </div>
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white py-3">
             <h3 class="mb-0">Pending Return Requests</h3>
         </div>
         <div class="card-body">
@@ -119,8 +123,8 @@
                         <td>{{ record.issue_date }}</td>
                         <td>{{ record.return_due_date }}</td>
                         <td>
-                            <a href="{% url 'approve_return' record.id %}" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Approve</a>
-                            <a href="{% url 'reject_return' record.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-times"></i> Reject</a>
+                            <a href="{% url 'approve_return' record.id %}" class="btn btn-sm btn-success me-1" aria-label="Approve Return"><i class="fas fa-check"></i> Approve</a>
+                            <a href="{% url 'reject_return' record.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')" aria-label="Reject Return"><i class="fas fa-times"></i> Reject</a>
                         </td>
                     </tr>
                     {% endfor %}
