@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{% if book %}Edit Book{% else %}Add Book{% endif %}{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow animate__animated animate__fadeIn">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">{% if book %}Edit Book{% else %}Add Book{% endif %}</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="{{ book.title|default:"" }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Author</label>
+                        <input type="text" class="form-control" id="author" name="author" value="{{ book.author|default:"" }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" class="form-control" id="category" name="category" value="{{ book.category|default:"" }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edition" class="form-label">Edition</label>
+                        <input type="text" class="form-control" id="edition" name="edition" value="{{ book.edition|default:"" }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" value="{{ book.quantity|default:"" }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100"><i class="fas fa-save"></i> {% if book %}Update{% else %}Add{% endif %} Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

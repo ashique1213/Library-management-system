@@ -1,0 +1,36 @@
+<div class="sidebar bg-dark text-white">
+    <div class="sidebar-header">
+        <h4 class="text-center py-3"><i class="fas fa-book-open"></i> Library</h4>
+    </div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+        </li>
+        {% if user.is_authenticated %}
+            {% if user.is_staff %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_student' %}"><i class="fas fa-user-plus"></i> Add Student</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_book' %}"><i class="fas fa-book"></i> Add Book</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'book_list' %}"><i class="fas fa-search"></i> Browse Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'borrowed_books' %}"><i class="fas fa-book-reader"></i> My Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user"></i> Profile</a>
+                </li>
+            {% endif %}
+        {% endif %}
+    </ul>
+</div>
